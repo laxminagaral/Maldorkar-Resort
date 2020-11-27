@@ -1,0 +1,95 @@
+{% extends 'resortapp/base.html' %}
+{% load static %}
+{% block content %}   
+	<!-- page -->
+	<div id="page" class="page">
+
+	    {% include 'resortapp/header.html' %}
+        
+<section class="w3l-inner-banner-main">
+            <div class="about-inner bg bg1" style="outline: none; cursor: inherit;">
+                <div class="wrapper">
+                    <ul class="breadcrumbs-custom-path">
+                        <li><a href="index.html" class="editContent" style="outline: none; cursor: inherit;">Home <span class="fa fa-angle-right" aria-hidden="true" style="outline: none; cursor: inherit;"></span></a></li>
+                        <li class="active editContent" style="outline: none; cursor: inherit;">My Profile</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+	<!-- //covers -->
+	<section class="w3l-content-23">
+	
+         <div id="content23-block" class="editContent" style="outline: none; cursor: inherit;">
+            <div class="wrapper">
+                <div class="content23-head text-center">
+                    <h3 class="editContent" style="outline: none; cursor: inherit;">My Profile</h3>
+                    <div class="col-12">
+
+				       <table id="tables">
+				          <tr>
+				          	<th>First Name:</th>
+				          	<td>{{ user.first_name }}</td>
+				          </tr>
+ <tr>
+				          	<th>Last Name:</th>
+				          	<td>{{ user.last_name }}</td>
+				          </tr>
+
+ <tr>
+				          	<th>Email:</th>
+				          	<td>{{ user.email }}</td>
+				          </tr>
+{% if user.is_active and user.is_staff %}
+<tr>
+				          	<th>Mobile:</th>
+				          	<td>{{ employee.mobile }}</td>
+				          </tr>
+
+ <tr>
+				          	<th>Address:</th>
+				          	<td>{{ employee.address }}</td>
+				          </tr>
+
+ <tr>
+				          	<th>Salary:</th>
+				          	<td>Rs.{{ employee.salary }}/-</td>
+				          </tr>
+ 
+{% else %}
+<tr>
+				          	<th>Mobile:</th>
+				          	<td>{{ customer.mobile }}</td>
+				          </tr>
+
+ <tr>
+				          	<th>Address:</th>
+				          	<td>{{ customer.address }}</td>
+				          </tr>
+
+ <tr>
+				          	<th>City:</th>
+				          	<td>{{ customer.city }}</td>
+				          </tr>
+{% endif %}
+				       </table>
+				       {% if user.is_active and user.is_staff %}
+				       {% else %}
+				       <br>
+				       <br>
+				          	<a href="{% url 'my_bookings' %}" style="border: none;
+    font-weight: 600;
+    display: inline-block;
+    font-size: 17px;
+    color: #F5F9FC;
+    background: #2C3038;
+    text-align: center;
+    padding: 8px 13px 10px;">My Bookings</a>
+    				{% endif %}
+				    </div>
+                </div>
+            </div>
+        </div>
+     
+    </section>
+	{% include 'resortapp/footer.html' %}    
+{% endblock %}

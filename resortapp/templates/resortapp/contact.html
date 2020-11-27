@@ -1,0 +1,47 @@
+{% extends 'resortapp/base.html' %}
+{% load static %}
+{% block content %}   
+	<!-- page -->
+	<div id="page" class="page">
+
+	    {% include 'resortapp/header.html' %}
+        
+	<section class="w3l-inner-banner-main">
+		<div class="banner-9 bg bg1" style="outline: none; cursor: inherit;">
+			<div class="wrapper">
+				<ul class="breadcrumbs-custom-path">
+					<li><a href="index.html" class="editContent" style="outline: none; cursor: inherit;">Home <span class="fa fa-angle-right" aria-hidden="true" style="outline: none; cursor: inherit;"></span></a></li>
+					<li><a href="#pages" class="editContent" style="outline: none; cursor: inherit;">Pages <span class="fa fa-angle-right" aria-hidden="true" style="outline: none; cursor: inherit;"></span></a></li>
+					<li class="active editContent" style="outline: none; cursor: inherit;">Contact</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+	<!-- //covers --><section class="w3l-contact-hny-6">
+		<!-- contact -->
+		<div class="contact-section">
+			<div class="map-fo">
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d40225.662985433584!2d74.62430746626734!3d15.246817370284159!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbf2076818a83ff%3A0xf6a9e73a043b93f9!2sDandeli%20Resorts!5e0!3m2!1sen!2sin!4v1583930308078!5m2!1sen!2sin" allowfullscreen="" class="editContent" style="outline: none; cursor: inherit;"></iframe>
+
+				
+			</div>
+			<div class="contact-info-ad editContent" style="outline: none; cursor: inherit;">
+				<div class="wrapper">
+					<div class="grid">
+						<div class="adress-lavi-info editContent" style="outline: none; cursor: inherit;">
+							<h3 class="editContent" style="outline: none; cursor: inherit;">Visit Us</h3>
+							<p class="editContent" style="outline: none; cursor: inherit;">Maldorkar Resort
+								<br>Dandelifun Ulavi Road Dandeli, <br>Karnataka, INDIA. </p>
+						</div>
+						<div class="adress-lavi-info">
+							<h3 class="editContent" style="outline: none; cursor: inherit;">Contact Us</h3>
+							<p><a href="tel:+1-800-999-800" class="editContent" style="outline: none; cursor: inherit;">+91 8867756014</a></p>
+							<p><a href="mailto:info@example.com" class="mail editContent" style="outline: none; cursor: inherit;">dandelijunglefunresort@gmail.com</a></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+{% include 'resortapp/footer.html' %}    
+{% endblock %}

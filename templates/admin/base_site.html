@@ -1,0 +1,167 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+{% block title %}Maldokar Resort | Admin site{% endblock %}
+
+{% block branding %}{% endblock %}
+{% block breadcrumbs %}{% endblock %}
+
+{% block bodyclass %}bg-light{% endblock %}
+
+{% block extrastyle %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'bundles/css/font-awesome.min.css' %}" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+      #header, .breadcrumbs { display: none; }
+
+      /* Bootstrap issues with admin */
+      * { box-sizing: unset; }
+      div.module caption { caption-side: top !important; }
+      .collapse { display: block !important; }
+      .navbar li { list-style-type: none; }
+    </style>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    
+{% endblock %}
+
+{% block bodyheader %}
+    <div class="bg-white container">
+
+      <div class="jumbotron">
+        <h1 class="display-4"><img src="/static/bundles/images/logo.png" alt="menu" style="outline: none;cursor: inherit;width: 54px;height: auto;padding: 10px;">MALDOKAR RESORT DANDELI ADMIN PANEL</h1>
+      
+      </div>
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <ul class="navbar-nav mr-auto">
+		{% if user.is_authenticated %}
+          <li class="nav-item">
+            <a
+              class="nav-link text-primary font-weight-bold"
+              href="/admin/"
+            >
+             Home
+            </a>
+          </li>
+		   <li class="nav-item dropdown">
+            <a
+              aria-expanded="false"
+              aria-haspopup="true"
+              class="font-weight-bold nav-link text-primary dropdown-toggle"
+              data-toggle="dropdown"
+              href="#"
+              role="button"
+            >
+             Master Entries
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="/admin/resortapp/activity">
+                Manage Activities
+              </a>
+              
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="/admin/resortapp/food">
+                Manage Foods
+              </a>
+			  <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="/admin/resortapp/package_detail">
+                Manage Packages
+              </a>
+			  <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="/admin/resortapp/designation">
+                Manage Designations
+              </a>
+            
+			<div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="/admin/resortapp/employee">
+                Manage Employees
+              </a>
+            </div>
+          </li>
+          
+		   
+		   <li class="nav-item">
+            <a
+              class="nav-link text-primary font-weight-bold"
+              href="/admin/resortapp/customer"
+            >
+             Customers
+            </a>
+          </li>
+		   <li class="nav-item">
+            <a
+              class="nav-link text-primary font-weight-bold"
+              href="/admin/resortapp/enquiry"
+            >
+             Enquiries
+            </a>
+          </li>
+          
+		   <li class="nav-item">
+            <a
+              class="nav-link text-primary font-weight-bold"
+              href="/admin/resortapp/booking"
+            >
+             Bookings
+            </a>
+          </li>
+		   <li class="nav-item">
+            <a
+              class="nav-link text-primary font-weight-bold"
+              href="/admin/resortapp/purchase_detail"
+            >
+             Purchases
+            </a>
+          </li>
+        <li class="nav-item dropdown">
+            <a
+              aria-expanded="false"
+              aria-haspopup="true"
+              class="font-weight-bold nav-link text-primary dropdown-toggle"
+              data-toggle="dropdown"
+              href="#"
+              role="button"
+            >
+             Reports
+            </a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="{% url 'booking_report' %}">
+                Bookings Report
+              </a>
+              
+              <div class="dropdown-divider"></div>
+               <a class="dropdown-item" href="{% url 'purchase_report' %}">
+                Purchase Report
+              </a>
+             
+           </div>
+      </li>
+		  <li class="nav-item">
+            <a
+              class="nav-link text-primary font-weight-bold"
+              href="/admin/password_change/"
+            >
+             Change Password
+            </a>
+          </li>
+		   <li class="nav-item">
+            <a
+              class="nav-link text-primary font-weight-bold"
+              href="/admin/logout/"
+            >
+             Logout
+            </a>
+          </li>
+          
+         
+          {% endif %}
+        </ul>
+      </nav>
+{% endblock %}
+
+{% block bodyfooter %}
+    </div>
+  
+  
+{% endblock %}

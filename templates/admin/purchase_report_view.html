@@ -1,0 +1,54 @@
+{% extends "admin/index.html" %}
+{% load static %}
+
+{% block content_title %}
+Booking Report View (Form  {{from_date}}    to  {{ to_date }} )
+{% endblock %}
+{% block content %}
+<div class="results">
+<table id="result_list">
+<thead>
+<tr>
+
+
+
+<th scope="col" class="sortable column-purchase_date">
+   
+     
+   
+   <div class="text"><a href="#">Purchase Date</a></div>
+   <div class="clear"></div>
+</th>
+<th scope="col" class="sortable column-purchase_description">
+   
+     
+   
+   <div class="text"><a href="#">Purchase Description</a></div>
+   <div class="clear"></div>
+</th>
+<th scope="col" class="sortable column-purchase_amount">
+   
+     
+   
+   <div class="text"><a href="#">Purchase Amount</a></div>
+   <div class="clear"></div>
+</th>
+</tr>
+</thead>
+<tbody>
+
+{% for purchase in purchases %}
+<tr>
+	<th class="field-customer nowrap">{{purchase.purchase_date}}</th>
+	<td class="field-get_packge_name">{{purchase.purchase_description}}</td>
+	<td class="field-get_packge_name">{{purchase.purchase_amount}}</td>
+</tr>
+{% endfor %}
+
+
+
+</tbody>
+</table>
+</div>
+       
+{% endblock %}

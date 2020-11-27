@@ -1,0 +1,43 @@
+{% extends 'resortapp/base.html' %}
+{% load static %}
+{% block content %}   
+    <!-- page -->
+    <div id="page" class="page">
+
+        {% include 'resortapp/header.html' %}
+      
+
+	<!-- //covers -->
+	<section class="w3l-form-34-main">
+        <div class="form34-sub">
+            <div style="margin: 0 auto; padding: 130px 80px;" >
+                <h3 style="line-height: 20px;font-size: 25px;text-align: center;margin-top: 20px;margin-bottom: 10px;">New Review</h3>
+                
+                
+				
+                <form method = 'POST' enctype="multipart/form-data"   style="margin: 0 auto;max-width: 450px;" >
+        {% csrf_token %}
+       <input type="hidden" name="customer_id" value="{{ customer_id}}" id="customer_id"/>
+		     
+           
+                <label style="
+    font-size: 20px;
+    font-weight: bold;
+    font-family: none;
+    color: darkblue;
+">Review Message
+                <textarea name="review_message" required="" id="review_message" style="
+    width: 450px;
+    height: 200px;
+    border: solid 1px darkgrey;
+"></textarea></label>
+            
+            
+        <button type="submit"  class="buttonbg signinbutton">SUBMIT REVIEW NOW</button>
+    </form>
+            </div>
+        </div>
+    </section>
+	
+	{% include 'resortapp/footer.html' %}    
+{% endblock %}

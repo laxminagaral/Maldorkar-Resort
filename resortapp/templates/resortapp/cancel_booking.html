@@ -1,0 +1,83 @@
+{% extends 'resortapp/base.html' %}
+{% load static %}
+{% block content %}   
+    <!-- page -->
+    <div id="page" class="page">
+
+        {% include 'resortapp/header.html' %}
+        
+<section class="w3l-inner-banner-main">
+            <div class="about-inner bg bg1" style="outline: none; cursor: inherit;">
+                <div class="wrapper">
+                    <ul class="breadcrumbs-custom-path">
+                        <li><a href="index.html" class="editContent" style="outline: none; cursor: inherit;">Home <span class="fa fa-angle-right" aria-hidden="true" style="outline: none; cursor: inherit;"></span></a></li>
+                        <li class="active editContent" style="outline: none; cursor: inherit;">Cancel Bookings</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    <!-- //covers -->
+    <section class="w3l-content-23">
+    
+         <div id="content23-block" class="editContent" style="outline: none; cursor: inherit;">
+            <div class="wrapper-full">
+                <div class="content23-head text-center">
+                    <h3 class="editContent" style="outline: none; cursor: inherit;"> Booking Details</h3>
+            
+                    <div class="col-12">
+                        <table id="tables">
+                          <tr>
+
+                            <th>Customer Name</th>
+                            <th>Mobile</th>
+                            <th>Email</th>
+                            <th style="width:150px;">Package</th>
+                            <th>Booking Date</th>
+                            <th>Number of People</th>
+                            <th>Booking Amount</th>
+                          
+                          </tr>
+                          
+                          <tr>
+                            
+                          <td>{{ booking.customer.user.first_name }}</td>
+                            <td>{{ booking.customer.mobile }}</td>
+                            <td>{{ booking.customer.user.email }}</td>
+                            <td>{{ booking.package.package_name }}</td>               
+                            <td>{{ booking.booking_date }}</td>                       
+                            <td>{{ booking.number_of_people }}</td>                      
+                            <td>{{ booking.booking_amount }}</td>
+                         
+                          </tr>
+
+                          
+
+                       </table>
+                        <form method = 'POST' enctype="multipart/form-data"   style="margin: 0 auto;max-width: 450px;" >
+        {% csrf_token %}
+       <input type="hidden" name="booking_id" value="{{ booking_id}}" id="booking_id"/>
+
+ <input type="hidden" name="booking_date" value="{{ booking.booking_date|date:"Y-m-d" }}" id="booking_date"/>
+       <label>Reason For Cancelation:
+       <select name="reason" id="reason" style="
+    appearance: auto;
+    width: 150px;
+    padding: 10px;
+    margin-bottom: 10px;margin-top: 20px;
+">
+       <option>Booking are full on the selected Day</option>
+       <option>Resort is closed on the day</option> 
+       <option>Canceled from Customer Side</option>
+       
+       </select>
+       </label>
+         <button type="submit"  class="buttonbg signinbutton">CANCEL BOOKING NOW</button>
+    </form>
+                     </div>
+                </div>
+            </div>
+        </div>
+     
+    </section>
+  {% include 'resortapp/footer.html' %}    
+{% endblock %}

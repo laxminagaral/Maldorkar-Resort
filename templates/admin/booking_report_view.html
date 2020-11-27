@@ -1,0 +1,106 @@
+{% extends "admin/index.html" %}
+{% load static %}
+
+{% block content_title %}
+Booking Report View (Form  {{from_date}}    to  {{ to_date }} )
+{% endblock %}
+{% block content %}
+<div class="results">
+<table id="result_list">
+<thead>
+<tr>
+
+
+<th scope="col" class="sortable column-customer">
+   
+     
+   
+   <div class="text"><a href="?o=1">Customer</a></div>
+   <div class="clear"></div>
+</th>
+<th scope="col" class="sortable column-get_packge_name">
+   
+     
+   
+   <div class="text"><a href="?o=2">Package Name</a></div>
+   <div class="clear"></div>
+</th>
+<th scope="col" class="sortable column-get_packge_description">
+   
+     
+   
+   <div class="text"><a href="?o=3">Package Description</a></div>
+   <div class="clear"></div>
+</th>
+<th scope="col" class="sortable column-get_packge_price">
+   
+     
+   
+   <div class="text"><a href="?o=4">Amount Per Person</a></div>
+   <div class="clear"></div>
+</th>
+<th scope="col" class="sortable column-booking_date">
+   
+     
+   
+   <div class="text"><a href="?o=5">Booking_date</a></div>
+   <div class="clear"></div>
+</th>
+<th scope="col" class="sortable column-number_of_people">
+   
+     
+   
+   <div class="text"><a href="?o=6">Number of people</a></div>
+   <div class="clear"></div>
+</th>
+<th scope="col" class="column-get_booking_amount">
+   
+   <div class="text"><span>Booking Amount</span></div>
+   <div class="clear"></div>
+</th>
+<th scope="col" class="sortable column-paid_status">
+   
+     
+   
+   <div class="text"><a href="?o=8">Paid status</a></div>
+   <div class="clear"></div>
+</th>
+<th scope="col" class="sortable column-booking_status">
+   
+     
+   
+   <div class="text"><a href="?o=9">Booking status</a></div>
+   <div class="clear"></div>
+</th>
+<th scope="col" class="sortable column-mode_of_payment">
+   
+     
+   
+   <div class="text"><a href="?o=10">Mode of payment</a></div>
+   <div class="clear"></div>
+</th>
+</tr>
+</thead>
+<tbody>
+
+{% for booking in bookings %}
+<tr>
+	<th class="field-customer nowrap"><a href="/admin/resortapp/booking/13/change/">{{booking.customer.user.first_name}} {{booking.customer.user.last_name}}</a></th>
+	<td class="field-get_packge_name">{{booking.package.package_name}}</td>
+	<td class="field-get_packge_description">{{booking.package.description}}</td><td class="field-get_packge_price">{{booking.package.amount_per_head}}</td>
+	<td class="field-booking_date nowrap">{{booking.booking_date}}</td>
+	<td class="field-number_of_people">{{booking.number_of_people}}</td>
+	<td class="field-get_booking_amount">{{booking.booking_amount}}</td>
+	<td class="field-paid_status">{{booking.paid_status}}</td>
+	<td class="field-booking_status">{{booking.booking_status}}</td>
+	<td class="field-mode_of_payment">{{booking.mode_of_payment}}</td>
+</tr>
+{% endfor %}
+
+
+
+</tbody>
+</table>
+</div>
+       
+{% endblock %}

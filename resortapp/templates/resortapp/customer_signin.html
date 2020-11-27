@@ -1,0 +1,40 @@
+{% extends 'resortapp/base.html' %}
+{% load static %}
+{% block content %}   
+    <!-- page -->
+    <div id="page" class="page">
+
+        {% include 'resortapp/header.html' %}
+  
+
+	<!-- //covers -->
+	<section class="w3l-form-34-main">
+        <div class="form34-sub">
+            <div class="form34">
+                <h4 class="form-head">Login</h4>
+                <p class="form-para">Sign in to get resort booking and booking statuses
+                    </p>
+                
+                <form method="post">
+                	 {% csrf_token %}
+                	 {{ form.as_p }}                    
+                    <label><input type="checkbox" name="showbtn" id="show_password" class="form-control checkbox" style="appearance: auto;" >Show Password</label>
+                    <script type='text/javascript'>
+        $(document).ready(function(){
+            $('#show_password').click(function(){
+             //alert($(this).is(':checked'));
+                $(this).is(':checked') ? $('#id_password').get(0).type = 'text' : $('#id_password').get(0).type = 'password';
+            });
+        });
+    </script>
+                    <button type="submit" class="buttonbg signinbutton">Login</button>
+                    <p class="signup">Forgot Password?<a href="{% url 'password_reset' %}" class="signuplink">Reset Password</a>
+                    <p class="signup">Have not an account yet?<a href="../../resortapp/custsignup" class="signuplink">Sign up</a>
+                    </p>
+                               </form>
+
+            </div>
+        </div>
+    </section>
+{% include 'resortapp/footer.html' %}    
+{% endblock %}

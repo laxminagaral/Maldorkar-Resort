@@ -1,0 +1,82 @@
+{% extends 'resortapp/base.html' %}
+{% load static %}
+{% block content %}   
+    <!-- page -->
+    <div id="page" class="page">
+
+        {% include 'resortapp/header.html' %}
+        
+<section class="w3l-inner-banner-main">
+            <div class="about-inner bg bg1" style="outline: none; cursor: inherit;">
+                <div class="wrapper">
+                    <ul class="breadcrumbs-custom-path">
+                        <li><a href="index.html" class="editContent" style="outline: none; cursor: inherit;">Home <span class="fa fa-angle-right" aria-hidden="true" style="outline: none; cursor: inherit;"></span></a></li>
+                        <li class="active editContent" style="outline: none; cursor: inherit;">Confirmed Bookings</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+	<!-- //covers -->
+	<section class="w3l-content-23">
+	
+         <div id="content23-block" class="editContent" style="outline: none; cursor: inherit;">
+            <div class="wrapper-full">
+                <div class="content23-head text-center">
+                    <h3 class="editContent" style="outline: none; cursor: inherit;"> Bookings</h3>
+                     <ul style="list-style: none; display: inline-flex; margin-bottom:20px;">
+                        <li style="
+    display: block;
+    padding: 10px;
+    background-color: #f9f8f7;  border: solid 1px black;
+"><a href="{% url 'all_bookings' %}"  style="outline: none; cursor: inherit;">Pending Bookings</a></li>
+                         <li style="
+    display: block;
+    padding: 10px;
+    background-color: gold;
+    
+"><a href="{% url 'confirmed_bookings' %}"  style="outline: none; cursor: inherit;">Confirmed Bookings</a></li>
+                                   <li style="
+    display: block;
+    padding: 10px;
+    background-color: #f9f8f7;
+    border: solid 1px black;
+"><a href="{% url 'canceled_bookings' %}"  style="outline: none; cursor: inherit;">Canceled Bookings</a></li>
+                    </ul>
+                    <div class="col-12">
+                    	<table id="tables">
+				          <tr>
+
+				          	
+				          	<th>Customer Name</th>
+                            <th>Mobile</th>
+                            <th>Email</th>
+                            <th style="width:150px;">Package</th>
+				          	<th>Booking Date</th>
+                            <th>Number of People</th>
+                            <th>Booking Amount</th>
+                          
+				          </tr>
+                          {% for booking in bookings %}
+ 						  <tr>
+ 						  	
+				          	<td>{{ booking.customer.user.first_name }}</td>
+                            <td>{{ booking.customer.mobile }}</td>
+                            <td>{{ booking.customer.user.email }}</td>
+                            <td>{{ booking.package.package_name }}</td>			          
+				          	<td>{{ booking.booking_date }}</td>				          
+				          	<td>{{ booking.number_of_people }}</td>				         
+				          	<td>{{ booking.booking_amount }}</td>
+				         
+				          </tr>
+
+				          {% endfor %}
+
+				       </table>
+                     </div>
+                </div>
+            </div>
+        </div>
+     
+    </section>
+	{% include 'resortapp/footer.html' %}    
+{% endblock %}

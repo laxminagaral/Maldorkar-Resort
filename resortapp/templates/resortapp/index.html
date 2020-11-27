@@ -1,0 +1,148 @@
+{% extends 'resortapp/base.html' %}
+{% load static %}
+{% block content %}   
+	<!-- page -->
+	<div id="page" class="page">
+
+	    {% include 'resortapp/header.html' %}
+        {% include 'resortapp/slider.html' %}
+        <!-- //covers -->
+		
+		{% if user.is_authenticated %}
+		{% else %}
+		<!-- form -->
+    <section class="w3l-form-my-mian">
+        <div class="form-botm-cont editContent" style="color: rgb(255, 255, 255); font-size: 25px; background-color: rgb(255, 255, 255); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, &quot;Helvetica Neue&quot;, sans-serif; outline: none; cursor: inherit;">
+            <div class="">
+                <div class="form-inner-cont">
+                    <div class="d-grid top-content-7"><h2><u style="" class="">Get the Best Holiday Planned!&nbsp;</u></h2>
+                    </div>
+                      <p class="sub-paragraph editContent" style="outline: none; cursor: inherit;">By submitting this form, you authorize Maldorkar Resort to contact
+                        you for this enquiry.</p>
+					{% if enquiry_form.errors %}
+    {% for field in enquiry_form %}
+        {% for error in field.errors %}
+            <div class="alert alert-danger" style="
+    color: rebeccapurple;
+    font-size: medium;
+">
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+    {% endfor %}
+    {% for error in enquiry_form.non_field_errors %}
+        <div class="alert alert-danger" style="
+    color: rebeccapurple;
+    font-size: medium;
+">
+            <strong>{{ error|escape }}</strong>
+        </div>
+    {% endfor %}
+{% endif %}
+<script>    
+        $(document).ready(function() {
+            $("#formID").validationEngine()
+        });
+    </script>   
+                    <form action="./" method="POST" class="signin-form editContent" style="outline: none; cursor: inherit;" id="formID">
+					{% csrf_token %}
+					
+				
+                        <div class="form-input editContent" style="outline: none; cursor: inherit;">
+						<label>Name</label>
+                           <input type="text" name="name" maxlength="100" class="validate[required,custom[onlyLetter]]" id="id_name" onblur="capitalizeFLetter(this)">
+                        </div>
+					
+                        <div class="form-input editContent" style="outline: none; cursor: inherit;">
+						<label>Address</label>
+                           <input type="text" name="address" maxlength="200"  class="validate[required]" id="id_address">
+                        </div>
+					
+                        <div class="form-input editContent" style="outline: none; cursor: inherit;">
+						<label>Mobile</label>
+                           <input type="text" name="mobile"  class="validate[required,custom[mobile]]" id="id_mobile">
+                        </div>
+					
+                        <div class="form-input editContent" style="outline: none; cursor: inherit;">
+						<label>Email</label>
+                           <input type="email" name="email" maxlength="100"  class="validate[required,custom[email]]" id="id_email">
+                        </div>
+					
+                        <div class="form-input editContent" style="outline: none; cursor: inherit;">
+						<label>Number of adults</label>
+						<input type="number" name="number_of_adults" required="" min="1" id="id_number_of_adults" value="1">
+                           
+                        </div>
+					
+                        <div class="form-input editContent" style="outline: none; cursor: inherit;">
+						<label>Number of children</label>
+                           <input type="number" name="number_of_children" required="" min="0" id="id_number_of_children" value="0">
+                        </div>
+					
+                        
+                        
+                        <button class="btn buttonbg" style="outline: none; cursor: inherit;" type="submit">Send Enquiry</button>
+                    </form>
+                  
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //form -->
+	{% endif %}
+
+	
+	<section class="w3l-grids-6">
+		<!-- grids -->
+		<div class="grids-layout editContent" style="outline: none; outline-offset: -2px; cursor: inherit; color: rgb(85, 90, 100); font-size: 20px; background-color: rgba(0, 0, 0, 0); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, &quot;Helvetica Neue&quot;, sans-serif;">
+            <marquee>
+
+
+			<div class="wrapper">
+				<h3 class="title-main editContent" style="outline: none; outline-offset: -2px; cursor: inherit;">Activities</h3>
+				<p class="sub-title editContent" style="outline: none; cursor: inherit;">Enjoy Different Activities&nbsp;</p>
+                <div class="d-grid grid-column-3">
+                    {% for activity in activities %}
+                       <div class="gd-innf editContent" style="outline: none; cursor: inherit;">
+
+                                    
+                        <a href="#single"><img class="img-responsive" src="../media/{{activity.photo}}" alt="image" style="outline: none;action=visibility:  cursor: inherit;"></a>
+
+
+                        <h3><a href="#single" class="vv-link editContent" style="outline: none; cursor: inherit;">{{activity.name}}</a></h3>
+
+                    </div>
+                    
+                    {% endfor %}
+                </div>
+				
+			</div>
+		</div>
+		<!-- //grids -->
+	</section><!-- Call to action 29 block -->
+</marquee>
+
+		
+	<section class="w3l-grids-6">
+        <!-- grids -->
+        <div class="grids-layout editContent" style="outline: none; outline-offset: -2px; cursor: inherit; color: rgb(85, 90, 100); font-size: 20px; background-color: rgba(0, 0, 0, 0); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen-Sans, Ubuntu, Cantarell, &quot;Helvetica Neue&quot;, sans-serif;">
+            <div class="wrapper">
+                <h3 class="title-main editContent" style="outline: none; outline-offset: -2px; cursor: inherit;">Food At Our Resort</h3>
+                <p class="sub-title editContent" style="outline: none; cursor: inherit;">Enjoy Different Foods&nbsp;</p>
+                <div class="d-grid grid-column-3">
+                    {% for food in foods %}
+                       <div class="gd-innf editContent" style="outline: none; cursor: inherit;">
+                        <a href="#single"><img class="img-responsive" src="../media/{{food.photo}}" alt="image" style="outline: none; cursor: inherit;"></a>
+                        <h3><a href="#single" class="vv-link editContent" style="outline: none; cursor: inherit;">{{food.food_name}}</a></h3>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+            </div>
+        </div>
+        <!-- //grids -->
+    </section><!-- Call to action 29 block -->
+    
+{% include 'resortapp/footer.html' %}
+	<!-- //w3l-footer-16 --></div><!-- /#page -->
+{% endblock %}

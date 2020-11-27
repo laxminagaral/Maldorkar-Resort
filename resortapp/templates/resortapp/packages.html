@@ -1,0 +1,70 @@
+{% extends 'resortapp/base.html' %}
+{% load static %}
+{% block content %}   
+	<!-- page -->
+	<div id="page" class="page">
+
+	    {% include 'resortapp/header.html' %}
+        
+	<section class="w3l-content-28-main">
+		<div class="content-28 editContent" style="outline: none; cursor: inherit;">
+			<div class="wrapper">
+			<h3 class="title-main editContent" style="outline: none; outline-offset: -2px; cursor: inherit;">Packages</h3>
+				<div class="col-12">
+				<table id="tables">
+				<tr>
+				
+				<th>Package Name</th>
+				<th>Description</th>
+				<th>Amount/Head</th>
+				<th></th>
+				</tr>
+				{% for package in shelf %}
+				<tr>
+				
+				<td>{{ package.package_name}}</td>
+				<td>{{ package.description}}</td>
+				<td>{{ package.amount_per_head}}/-</td>
+				{% if user.is_authenticated  %}
+				   {% if user.is_staff %}
+				   {% else %}
+				<td><a href="../book_now/{{ package.id}}" class="btn actionbg">Book Now</a></td>
+				   {% endif %}
+				{% else %}
+				<td><a href="../custsignin" class="btn actionbg">Book Now</a></td>
+				
+				{% endif %}
+				</tr>
+				{% endfor %}
+				</table>
+					
+				</div>
+				
+			</div>
+		</div>
+	</section>
+	<!-- //content 29 block --><!-- text-29 -->
+	<section class="w3l-text-29-main">
+		<div class="text-29  editContent" style="outline: none; cursor: inherit;">
+			<div class="wrapper">
+				<div class="text-styles-top-290">
+					<h3 class="editContent" style="outline: none; cursor: inherit;">We are the travel planning experts.
+						Let us plan the perfect journey for you!</h3>
+					<div class="text-info-29-top editContent" style="outline: none; cursor: inherit;">
+						<div class="text-styles-29-left_img">
+							<img src="{% static 'bundles/images/check1.png' %}" class="img" alt="" style="outline: none; cursor: inherit;">
+						</div>
+						<div class="text-styles-29-right_content">
+							<h5><a href="#single" class="link editContent" style="outline: none; cursor: inherit;">MUST VISIT DANDELI AT LEAST ONCE IN YOUR LIFETIME</a></h5>
+							<p class="editContent" style="outline: none; cursor: inherit;">Take back the essence of nature with you when you visit.
+Dandeli Maldorkar Resort Camp gives you taste at Wildlife Resorts In Dandeli, Adventure through Red Stone Cottages, commando Tents, jungle Camping And More which lifts your spirits and let’s you be one with nature. Unwind yourself under a canopy of trees and refresh yourself by sight seeing and bird watching. The Dandeli Resorts is heaven in disguise. <p>
+						</div>
+					</div>
+					
+					
+				</div>
+			</div>
+		</div>
+	</section>
+{% include 'resortapp/footer.html' %}    
+{% endblock %}
